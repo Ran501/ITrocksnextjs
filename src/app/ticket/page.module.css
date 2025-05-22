@@ -1,0 +1,848 @@
+/* Theme colors removed for CSS Modules compatibility. Use variables from global CSS. */
+
+/* General styles */
+.page,
+.ticket-page {
+  background: var(--gray-light);
+  color: var(--primary-black);
+}
+
+.hero,
+.ticket-hero {
+  background: var(--primary-black);
+  color: var(--primary-white);
+  padding: 2rem 0 1rem 0;
+  text-align: center;
+}
+
+.heroContent,
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.category-card {
+  background: var(--primary-white);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.card-icon {
+  color: var(--primary-red);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-align: center;
+}
+
+.features, .ticket-features {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.feature {
+  text-align: center;
+  flex: 1 1 0;
+}
+
+.featureIcon, .fa-icon {
+  color: var(--primary-red);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureContent, .feature-content {
+  margin-top: 0.5rem;
+}
+
+.feature h3 {
+  color: var(--primary-black);
+  font-weight: 700;
+}
+
+.feature p {
+  color: var(--gray-dark);
+  font-size: 1rem;
+}
+
+/* Navigation */
+.nav, .ticket-nav {
+  background: var(--primary-white);
+  padding: 1rem 0 0.5rem 0;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 1.5rem;
+}
+
+.navLinks, .nav-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  padding-left: 2rem;
+}
+
+.navLinks .active, .nav-links .active {
+  background: var(--primary-red);
+  color: var(--primary-white) !important;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  border: none;
+  text-decoration: none;
+}
+
+/* Match Cards */
+.matchCard, .match-card {
+  background: var(--primary-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+.matchHeader, .match-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray-medium);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.matchDate, .match-date {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.dateBox, .date-box {
+  background: var(--primary-red);
+  color: var(--primary-white);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.timeBox, .time-box {
+  color: var(--primary-black);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.matchType, .match-type {
+  color: var(--primary-red);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.matchDetails, .match-details {
+  margin-top: 1rem;
+}
+
+.matchTeams, .match-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.teamLogo, .team-logo {
+  border-radius: 50%;
+  border: 2px solid var(--primary-red);
+}
+
+.vsContainer, .vs-container {
+  text-align: center;
+}
+
+.vs {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-black);
+}
+
+.ticketStatus, .ticket-status {
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.ticketStatus.available, .ticket-status.available {
+  color: var(--primary-red);
+}
+.ticketStatus.coming_soon, .ticket-status.coming_soon {
+  color: var(--gray-dark);
+}
+
+.ticketSections, .ticket-sections {
+  margin-bottom: 1.2rem;
+}
+
+.sectionButtons, .section-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.sectionButtons button, .section-buttons button {
+  background: var(--primary-white);
+  color: var(--primary-black);
+  border: 2px solid var(--primary-red);
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.sectionButtons button.active, .section-buttons button.active {
+  background: var(--primary-red);
+  color: var(--primary-white);
+}
+.sectionButtons button:disabled, .section-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ticketActions, .ticket-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+}
+
+.priceInfo, .price-info {
+  color: var(--primary-black);
+  font-weight: 600;
+}
+.price {
+  color: var(--primary-red);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+}
+
+.buyTicketBtn, .buy-ticket-btn {
+  background: var(--primary-red);
+  color: var(--primary-white);
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s;
+}
+.buyTicketBtn:disabled, .buy-ticket-btn:disabled {
+  background: var(--gray-medium);
+  color: var(--gray-dark);
+  cursor: not-allowed;
+}
+.buyTicketBtn:hover:not(:disabled), .buy-ticket-btn:hover:not(:disabled) {
+  background: #b80022;
+}
+
+/* Modal Styles */
+.modalOverlay, .modalOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal, .modal {
+  background: var(--primary-white);
+  border-radius: 14px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  max-width: 480px;
+  width: 100%;
+  padding: 2rem 2rem 1.5rem 2rem;
+  position: relative;
+}
+.modalHeader, .modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray-medium);
+  padding-bottom: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+.closeButton, .closeButton {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--primary-red);
+  cursor: pointer;
+  line-height: 1;
+}
+.modalContent, .modalContent {
+  padding: 0;
+}
+.bookingSummary, .bookingSummary {
+  margin-bottom: 1.5rem;
+}
+.matchInfo, .matchInfo,
+.seatInfo, .seatInfo {
+  margin-bottom: 1.2rem;
+}
+.summaryItem, .summaryItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  color: var(--primary-black);
+}
+.quantitySelector, .quantitySelector {
+  margin-top: 1rem;
+}
+.quantityControls, .quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+.quantityBtn, .quantityBtn {
+  background: var(--primary-red);
+  color: var(--primary-white);
+  border: none;
+  border-radius: 4px;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.quantityBtn:disabled, .quantityBtn:disabled {
+  background: var(--gray-medium);
+  color: var(--gray-dark);
+  cursor: not-allowed;
+}
+.quantityInput, .quantityInput {
+  width: 3rem;
+  text-align: center;
+  font-size: 1.1rem;
+  border: 1px solid var(--gray-medium);
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+}
+.groupDiscount, .groupDiscount {
+  background: #fff0f2;
+  border-left: 4px solid var(--primary-red);
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+.discountIcon, .discountIcon {
+  color: var(--primary-red);
+  font-size: 1.5rem;
+}
+.discountInfo, .discountInfo {
+  color: var(--primary-black);
+}
+.priceSummary, .priceSummary {
+  margin-top: 1rem;
+}
+.summaryTotal, .summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: var(--primary-red);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+.modalActions, .modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.cancelBtn, .cancelBtn {
+  background: var(--gray-medium);
+  color: var(--primary-black);
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cancelBtn:hover:not(:disabled), .cancelBtn:hover:not(:disabled) {
+  background: #d3d3d3;
+}
+.confirmBtn, .confirmBtn {
+  background: var(--primary-red);
+  color: var(--primary-white);
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.confirmBtn:disabled, .confirmBtn:disabled {
+  background: var(--gray-medium);
+  color: var(--gray-dark);
+  cursor: not-allowed;
+}
+.confirmBtn:hover:not(:disabled), .confirmBtn:hover:not(:disabled) {
+  background: #b80022;
+}
+
+/* Info Section */
+.infoSection, .ticket-info-section {
+  background: var(--primary-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  margin: 2rem auto 0 auto;
+  max-width: 1200px;
+  padding: 2rem 2rem 1.5rem 2rem;
+}
+.infoGrid, .info-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+.infoItem, .info-item {
+  flex: 1 1 0;
+  color: var(--primary-black);
+}
+
+/* Notices and Misc */
+.ticketNotice, .ticket-notice {
+  background: #fff0f2;
+  color: var(--primary-red);
+  border-left: 4px solid var(--primary-red);
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .features, .ticket-features {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .infoGrid, .info-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .category-card, .infoSection, .ticket-info-section {
+    padding: 1.2rem 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .matchCard, .match-card {
+    padding: 1rem 0.5rem;
+  }
+  .modal, .modal {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* Hero Section */
+.hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('/img/stadium.webp');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.heroContent h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.heroContent p {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Page Layout */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Category Cards */
+.categories {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.categoryCard {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.cardContent {
+  text-align: center;
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  color: #0070f3;
+  margin-bottom: 1rem;
+}
+
+.categoryCard h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.categoryCard p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-link:hover {
+  opacity: 0.8;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Upcoming Matches */
+.upcomingMatches {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.sectionHeader h2 {
+  font-size: 1.75rem;
+  color: #1a237e;
+}
+
+.monthSelector {
+  display: flex;
+  gap: 1rem;
+}
+
+.monthSelector button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #666;
+}
+
+.monthSelector button.active {
+  color: #0070f3;
+  border-bottom: 2px solid #0070f3;
+}
+
+.ticketNotice {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.matchesContainer {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Ticket Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.featureIcon {
+  color: #0070f3;
+  font-size: 1.5rem;
+}
+
+.featureContent h3 {
+  margin: 0 0 0.5rem;
+  color: #333;
+}
+
+.featureContent p {
+  margin: 0;
+  color: #666;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modalHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  color: #333;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  color: #e31837;
+}
+
+.modalContent {
+  padding: 1.5rem;
+}
+
+.bookingSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.matchInfo,
+.seatInfo {
+  background: #f8f8f8;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.quantitySelector {
+  margin-top: 1rem;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.quantityBtn {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantityBtn:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.quantityBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantityInput {
+  width: 60px;
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.groupDiscount {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff5f6;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e31837;
+}
+
+.discountIcon {
+  color: #e31837;
+  font-size: 1.5rem;
+}
+
+.discountInfo h4 {
+  margin: 0;
+  color: #e31837;
+}
+
+.discountInfo p {
+  margin: 0.25rem 0 0;
+  color: #666;
+}
+
+.priceSummary {
+  background: #f8f8f8;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.summaryTotal {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #e0e0e0;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.cancelBtn,
+.confirmBtn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancelBtn {
+  background: white;
+  border: 1px solid #e0e0e0;
+  color: #666;
+}
+
+.cancelBtn:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.confirmBtn {
+  background: #e31837;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.confirmBtn:hover:not(:disabled) {
+  background: #c41530;
+}
+
+.confirmBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Loading State */
+.confirmBtn svg {
+  margin-right: 0.5rem;
+} 
