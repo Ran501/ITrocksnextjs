@@ -1,12 +1,36 @@
-import { NextAuthOptions } from 'next-auth';
+import { NextAuthOptions, User } from 'next-auth';
 import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { MongoDBAdapter } from '@auth/mongodb-adapter';
+import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import clientPromise from '@/lib/mongodb';
 import bcrypt from 'bcryptjs';
 
+// Extend the built-in session types
+declare module "next-auth" {
+  interface User {
+    id: string;
+    email: string;
+    name: string;
+    phone?: string;
+  }
+  
+  interface Session {
+    user: User & {
+      id: string;
+      phone?: string;
+    };
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string;
+    phone?: string;
+  }
+}
+
 const authOptions: NextAuthOptions = {
-  adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise) as any,
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -56,15 +80,21 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.phone = user.phone;
+        // Type assertion to handle the custom user properties
+        const customUser = user as User;
+        token.id = customUser.id;
+        if (customUser.phone) {
+          token.phone = customUser.phone;
+        }
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        (session.user as any).id = token.id;
-        (session.user as any).phone = token.phone;
+        session.user.id = token.id;
+        if (token.phone) {
+          session.user.phone = token.phone;
+        }
       }
       return session;
     }
