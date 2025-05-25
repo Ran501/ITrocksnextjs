@@ -120,7 +120,6 @@ export default function TicketPage() {
           <p><b>Group Booking</b> offers special rates for groups of 10 or more. The more tickets you book, the bigger the discount!</p>
           <ul>
             <li>10% off for 10-20 tickets</li>
-            <li>15% off for 21+ tickets</li>
             <li>Reserved seating and priority entry</li>
           </ul>
         </>

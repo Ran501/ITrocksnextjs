@@ -8,6 +8,28 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
   },
   reactStrictMode: true,
+  // Optimize build process
+  swcMinify: true,
+  experimental: {
+    // Reduce memory usage during build
+    optimizeCss: true,
+    // Optimize build traces
+    turbotrace: {
+      logLevel: 'error',
+      logDetail: false,
+      memoryLimit: 4096
+    }
+  },
+  // Increase build memory limit
+  webpack: (config, { isServer }) => {
+    // Increase memory limit for build
+    config.optimization = {
+      ...config.optimization,
+      moduleIds: 'deterministic',
+      chunkIds: 'deterministic'
+    }
+    return config
+  }
 }
 
 module.exports = nextConfig 
