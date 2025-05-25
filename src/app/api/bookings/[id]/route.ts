@@ -17,10 +17,6 @@ export async function GET(
       where: {
         id: params.id,
         phone
-      },
-      include: {
-        event: true,
-        section: true
       }
     });
 
