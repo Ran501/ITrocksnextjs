@@ -29,6 +29,17 @@ const nextConfig = {
       chunkIds: 'deterministic'
     }
     return config
+  },
+  // Handle static page generation
+  output: 'standalone',
+  // Disable static optimization for error pages
+  staticPageGenerationTimeout: 120,
+  // Configure error pages
+  async redirects() {
+    return []
+  },
+  async headers() {
+    return []
   }
 }
 
