@@ -36,7 +36,7 @@ interface MatchData {
 
 export default function TicketPage() {
   // State management for ticket booking
-  const [selectedMonth, setSelectedMonth] = useState<'JUNE' | 'JULY'>('JUNE');
+  const [selectedMonth, setSelectedMonth] = useState<'MAY' | 'JULY'>('MAY');
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [selectedMatch, setSelectedMatch] = useState<number | null>(null);
   const [ticketQuantity, setTicketQuantity] = useState(1);
@@ -50,11 +50,11 @@ export default function TicketPage() {
 
   // Mock data - This will be replaced with API calls later
   const matchData: MatchData = {
-    JUNE: [
+    MAY: [
       {
         id: 1,
-        date: { day: '15', month: 'JUN', year: '2025' },
-        time: '15:00',
+        date: { day: '27', month: 'MAY', year: '2025' },
+        time: '13:00',
         type: 'Friendly Match',
         homeTeam: { name: '2IT FC', logo: '/img/it.jpg' },
         awayTeam: { name: 'AkaboTay FC', logo: '/img/7035929.jpg' },
@@ -378,10 +378,10 @@ export default function TicketPage() {
             <h2>UPCOMING MATCHES</h2>
             <div className={styles.monthSelector}>
               <button 
-                className={selectedMonth === 'JUNE' ? styles.active : ''} 
-                onClick={() => setSelectedMonth('JUNE')}
+                className={selectedMonth === 'MAY' ? styles.active : ''} 
+                onClick={() => setSelectedMonth('MAY')}
               >
-                JUNE 2025
+                MAY 2025
               </button>
               <button 
                 className={selectedMonth === 'JULY' ? styles.active : ''} 

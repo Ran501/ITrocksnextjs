@@ -4,6 +4,7 @@ import Providers from './providers';
 import ClientLayout from './ClientLayout';
 import { NewsProvider } from '@/context/NewsContext';
 import { ProductProvider } from '@/context/ProductContext';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           <ProductProvider>
             <Providers>
               <ClientLayout>{children}</ClientLayout>
+              <ScrollToTop />
             </Providers>
           </ProductProvider>
         </NewsProvider>

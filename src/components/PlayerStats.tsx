@@ -138,12 +138,12 @@ export const players = [
       tackles: "32",
       interceptions: "11",
       radarStats: {
-        tackling: 82,
+        tackling: 70,
         marking: 79,
         heading: 81,
         positioning: 78,
         passing: 81,
-        strength: 78
+        strength: 90
       }
     },
     social: {

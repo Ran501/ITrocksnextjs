@@ -6,6 +6,10 @@
   --gray-light: #f7f7f7;
   --gray-medium: #e0e0e0;
   --gray-dark: #444;
+  /* Smooth scroll behavior */
+  --scroll-behavior: smooth;
+  --scroll-duration: 0.5s;
+  --scroll-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -18,11 +22,29 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  scroll-behavior: var(--scroll-behavior);
+  scroll-padding-top: 80px; /* Adjust based on your header height */
 }
 
 html {
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  scroll-behavior: var(--scroll-behavior);
+}
+
+/* Smooth scroll for anchor links */
+html:focus-within {
+  scroll-behavior: var(--scroll-behavior);
+}
+
+/* Smooth scroll for specific elements */
+.smooth-scroll {
+  scroll-behavior: var(--scroll-behavior);
+  transition: all var(--scroll-duration) var(--scroll-timing);
+}
+
+/* Optional: Add smooth scroll to specific sections */
+section {
+  scroll-margin-top: 80px; /* Adjust based on your header height */
 }
 
 h1, h2, h3, h4 {
