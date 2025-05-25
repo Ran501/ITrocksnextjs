@@ -22,16 +22,9 @@ export async function GET(
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
-    // Get user's orders with related data
+    // Get user's orders
     const orders = await prisma.order.findMany({
-      orderBy: { createdAt: 'desc' },
-      include: {
-        items: {
-          include: {
-            product: true
-          }
-        }
-      }
+      orderBy: { createdAt: 'desc' }
     });
 
     return NextResponse.json(orders);

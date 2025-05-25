@@ -6,7 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import styles from './ProductManager.module.css';
 import { useProducts } from '@/context/ProductContext';
-import { Category } from '@prisma/client';
+
+enum Category {
+  jerseys = 'jerseys',
+  apparel = 'apparel',
+  accessories = 'accessories'
+}
 
 interface Product {
   id: number;
@@ -203,8 +208,8 @@ export default function ProductManager() {
             </div>
             <div className={styles.productContent}>
               <h3>{product.title}</h3>
-              <p className={styles.price}>Nu. {product.price.toFixed(2)}</p>
-              <p className={styles.originalPrice}>Nu. {product.originalPrice.toFixed(2)}</p>
+              <p className={styles.price}>Nu. {product.price?.toFixed(2) ?? '0.00'}</p>
+              <p className={styles.originalPrice}>Nu. {product.originalPrice?.toFixed(2) ?? '0.00'}</p>
               <p className={styles.category}>{product.category}</p>
               <p className={styles.discount}>{product.discount}% OFF</p>
               <div className={styles.actions}>
