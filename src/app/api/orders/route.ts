@@ -2,7 +2,13 @@
 
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
-import { OrderStatus } from '@prisma/client';
+
+enum OrderStatus {
+  pending = 'pending',
+  processing = 'processing',
+  completed = 'completed',
+  cancelled = 'cancelled'
+}
 
 // Helper function to format date in Bhutan time
 function formatBhutanTime(date: Date): string {
@@ -62,9 +68,6 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
   try {
     const orders = await prisma.order.findMany({
-      include: {
-        items: true
-      },
       orderBy: {
         createdAt: 'desc'
       }
