@@ -22,7 +22,7 @@ ChartJS.register(
 // Set default font color to white for better visibility on dark background
 defaults.color = '#fff';
 defaults.font.family = "'Inter', sans-serif";
-defaults.font.weight = '600';
+defaults.font.weight = 600;
 defaults.font.size = 14;
 
 // Set default border color for better visibility
