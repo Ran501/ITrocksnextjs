@@ -801,3 +801,193 @@
     transition: none;
   }
 }
+
+/* Juventus-style Featured Products Row */
+.featuredJuventusRow {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  justify-content: center;
+  align-items: stretch;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+}
+
+.featuredJuventusItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 340px;
+  max-width: 400px;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+  position: relative;
+}
+
+.featuredJuventusImgWrap {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.featuredJuventusInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding-left: 0.2rem;
+}
+
+.featuredJuventusTitle {
+  font-family: 'Oswald', 'Montserrat', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 0.2rem 0;
+  letter-spacing: 1px;
+}
+
+.featuredJuventusPrice {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e31837;
+  margin-bottom: 0.5rem;
+}
+
+.featuredJuventusBuyBtn {
+  display: inline-block;
+  background: #e31837;
+  color: #fff;
+  font-family: 'Oswald', 'Montserrat', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.9rem 2.2rem;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 0.5rem;
+}
+
+.featuredJuventusBuyBtn:hover {
+  background: #b80022;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .featuredJuventusRow {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  .featuredJuventusItem {
+    min-width: 90vw;
+    max-width: 98vw;
+  }
+  .featuredJuventusImgWrap {
+    height: 220px;
+  }
+  .featuredJuventusTitle {
+    font-size: 1.3rem;
+  }
+  .featuredJuventusPrice {
+    font-size: 1.1rem;
+  }
+  .featuredJuventusBuyBtn {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+  }
+}
+
+.productShowcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.productCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.productCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.productImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.productImageWrapper img {
+  transition: transform 0.5s ease;
+}
+
+.productCard:hover .productImageWrapper img {
+  transform: scale(1.05);
+}
+
+.productDetails {
+  padding: 1.5rem;
+  background: white;
+}
+
+.productTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3436;
+  margin-bottom: 0.5rem;
+}
+
+.productPrice {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e31837;
+  margin-bottom: 1rem;
+}
+
+.shopButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #e31837;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.shopButton:hover {
+  background: #c41230;
+  transform: translateX(5px);
+}
+
+@media (max-width: 1024px) {
+  .productShowcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .productShowcase {
+    grid-template-columns: 1fr;
+  }
+}

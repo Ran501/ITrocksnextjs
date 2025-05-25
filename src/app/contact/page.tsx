@@ -11,6 +11,7 @@ import styles from './contact.module.css';
 export default function ContactPage() {
   return (
     <div className={styles.container}>
+      <div style={{ height: '160px' }} />
       <div className={styles.heroSection}>
         <h1>Get in Touch</h1>
         <p>We'd love to hear from you. Here's how you can reach us.</p>

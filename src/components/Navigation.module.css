@@ -117,4 +117,37 @@
 
 .loginButton:hover {
   background: #c41230;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #e31837;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+@media (max-width: 900px) {
+  .navLinks {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 1001;
+    text-align: center;
+  }
+  .navLinks.open {
+    display: flex;
+  }
+  .menuButton {
+    display: block;
+  }
 } 

@@ -5,6 +5,7 @@ import styles from './privacy.module.css';
 export default function PrivacyPage() {
   return (
     <div className={styles.container}>
+      <div style={{ height: '160px' }} />
       <h1>Privacy Policy</h1>
       
       <section className={styles.section}>

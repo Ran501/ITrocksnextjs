@@ -456,4 +456,113 @@
 .scrolled .logoutButton {
   color: #333;
   background: rgba(227, 24, 55, 0.05);
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.2rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  z-index: 1201;
+}
+.hideOnMobile {
+  display: block;
+}
+
+
+ 
+
+
+@media (max-width: 600px) {
+  .hamburger {
+    display: block;
+    position: relative;
+  }
+  .navLinks,
+  .rightNav {
+    display: none;
+  }
+  .showMenu {
+    display: none !important;
+  }
+  .mobileMenuOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    animation: fadeInOverlay 0.3s;
+  }
+  .mobileMenuHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem 1.2rem 1.2rem;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+  }
+  .mobileLogo {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .closeMenu {
+    background: none;
+    border: none;
+    color: #e31837;
+    font-size: 2.2rem;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    margin-left: 1rem;
+  }
+  .mobileMenuLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 1.2rem 0 0 0;
+    width: 100%;
+  }
+  .hideOnMobile {
+    display: none !important;
+  }
+  .mobileMenuLinks a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #222;
+    text-decoration: none;
+    padding: 1.1rem 1.5rem 1.1rem 1.5rem;
+    border-bottom: 1px solid #f2f2f2;
+    background: none;
+    transition: background 0.18s, color 0.18s;
+    letter-spacing: 0.01em;
+  }
+  .mobileMenuLinks a:last-child {
+    border-bottom: none;
+  }
+  .mobileMenuLinks a:hover {
+    background: #f8f8f8;
+    color: #e31837;
+  }
+  .mobileMenuLinks svg {
+    color: #e31837;
+    font-size: 1.2rem;
+    margin-left: 1.2rem;
+  }
+  .mobileActive {
+    color: #e31837 !important;
+    border-bottom: 2px solid #e31837;
+    background: #fff;
+  }
 } 

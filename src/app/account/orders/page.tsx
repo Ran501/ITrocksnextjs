@@ -119,7 +119,7 @@ export default function OrdersPage() {
                   <div className={`px-4 py-2 rounded-full ${
                     order.status === 'completed' ? 'bg-green-100 text-green-800' :
                     order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                    order.status === 'processing' ? 'bg-blue-100 text-blue-800' :
+                    order.status === 'processing' ? 'bg-red-100 text-red-800' :
                     'bg-red-100 text-red-800'
                   }`}>
                     {order.status.charAt(0).toUpperCase() + order.status.slice(1)}

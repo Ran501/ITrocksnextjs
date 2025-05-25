@@ -58,7 +58,7 @@ const initialArticles: NewsArticle[] = [
     id: 5,
     title: "Women's Team Secures Historic Victory",
     date: "March 5, 2024",
-    image: "/img/team-logo.jpg",
+    image: "/img/stadium8.jpg",
     excerpt: "Women's team makes history with record-breaking performance...",
     content: "The 2IT FC Women's team has made history by securing their first major trophy in a thrilling final match. The team's outstanding performance throughout the season culminated in a dramatic penalty shootout victory. This achievement marks a significant milestone in the club's commitment to women's football development."
   },
@@ -66,7 +66,7 @@ const initialArticles: NewsArticle[] = [
     id: 6,
     title: "Community Outreach Program Success",
     date: "March 3, 2024",
-    image: "/img/team-logo.jpg",
+    image: "/img/stadium9.jpg",
     excerpt: "Local community initiative exceeds expectations in first year...",
     content: "Our community outreach program has exceeded all expectations in its first year, reaching over 10,000 young people across the region. The initiative focuses on using football as a tool for social development, providing opportunities for underprivileged youth and promoting physical activity in schools."
   },
@@ -74,7 +74,7 @@ const initialArticles: NewsArticle[] = [
     id: 7,
     title: "New Technical Director Appointed",
     date: "March 1, 2024",
-    image: "/img/team-logo.jpg",
+    image: "/img/stadium10.jpg",
     excerpt: "Experienced football professional joins club's technical team...",
     content: "2IT FC has appointed a new Technical Director with extensive experience in top European leagues. The appointment signals the club's commitment to developing a world-class football philosophy and implementing innovative training methodologies across all age groups."
   },
@@ -82,7 +82,7 @@ const initialArticles: NewsArticle[] = [
     id: 8,
     title: "Sustainability Initiative Launched",
     date: "February 28, 2024",
-    image: "/img/team-logo.jpg",
+    image: "/img/stadium12.jpg",
     excerpt: "Club announces ambitious environmental sustainability program...",
     content: "2IT FC has launched a comprehensive sustainability initiative aimed at reducing the club's environmental impact. The program includes solar panel installation, waste reduction measures, and a commitment to carbon neutrality by 2030. This initiative reflects the club's dedication to environmental responsibility."
   },
@@ -90,7 +90,7 @@ const initialArticles: NewsArticle[] = [
     id: 9,
     title: "International Youth Tournament Success",
     date: "February 25, 2024",
-    image: "/img/team-logo.jpg",
+    image: "/img/stadium11.jpg",
     excerpt: "Youth teams excel in prestigious international tournament...",
     content: "Our youth teams have achieved remarkable success in a prestigious international tournament, with both U16 and U18 teams reaching the finals. The tournament provided valuable experience against top international opposition and showcased the quality of our youth development program."
   }

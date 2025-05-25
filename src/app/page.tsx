@@ -10,40 +10,13 @@ import styles from './page.module.css';
 import PlayerStats, { players } from '../components/PlayerStats';
 import { useNews } from '@/context/NewsContext';
 import { useProducts } from '@/context/ProductContext';
+import NewsCard from '../components/NewsCard';
 
 // Lazy load PlayerStats component
 const PlayerStatsComponent = dynamic(() => import('../components/PlayerStats'), {
   loading: () => <div>Loading...</div>,
   ssr: false
 });
-
-// Memoized news card component
-const NewsCard = memo(({ news }: { news: any }) => (
-  <div className={styles.newsCard}>
-    <div className={styles.newsImage}>
-      <Image 
-        src={news.image} 
-        alt={news.title}
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        loading="lazy"
-        quality={75}
-        style={{ objectFit: 'cover' }}
-      />
-    </div>
-    <div className={styles.newsContent}>
-      <span className={styles.newsDate}>{news.date}</span>
-      <h3>{news.title}</h3>
-      <p>{news.excerpt}</p>
-      <Link href={`/news/${news.id}`} className={styles.readMore}>
-        Read More
-        <FontAwesomeIcon icon={faChevronRight} />
-      </Link>
-    </div>
-  </div>
-));
-
-NewsCard.displayName = 'NewsCard';
 
 // Memoized stats card component
 const StatCard = memo(({ number, label }: { number: string; label: string }) => (
@@ -58,6 +31,7 @@ StatCard.displayName = 'StatCard';
 export default function Home() {
   const { articles } = useNews();
   const { products } = useProducts();
+  console.log('products:', products, Array.isArray(products));
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentPlayer, setCurrentPlayer] = useState(0);
 
@@ -79,8 +53,8 @@ export default function Home() {
   };
 
   // Get latest 3 news articles and featured products
-  const latestNews = articles.slice(0, 3);
-  const featuredProducts = products.slice(0, 3);
+  const latestNews = Array.isArray(articles) ? articles.slice(0, 3) : [];
+  const featuredProducts = Array.isArray(products) ? products.slice(0, 3) : [];
 
   const stats = [
     { 
@@ -153,7 +127,7 @@ export default function Home() {
                 <div className={styles.progressBarContainer}>
                   <div 
                     className={styles.progressBar} 
-                    style={{ width: `${stat.percentage}%` }}
+                    style={{ width: `${stat.percentage}%`, animation: 'none' }}
                   ></div>
                 </div>
                 <div className={styles.progressPercentage}>{stat.percentage}%</div>
@@ -171,21 +145,21 @@ export default function Home() {
             <FontAwesomeIcon icon={faChevronRight} />
           </Link>
         </div>
-        <div className={styles.productsGrid}>
+        <div className={styles.productShowcase}>
           {featuredProducts.map(product => (
             <div key={product.id} className={styles.productCard}>
-              <div className={styles.productImage}>
+              <div className={styles.productImageWrapper}>
                 <Image
                   src={product.image}
-                  alt={product.name}
+                  alt={product.title}
                   fill
                   style={{ objectFit: 'contain' }}
                 />
               </div>
-              <div className={styles.productInfo}>
-                <h3>{product.name}</h3>
-                <span className={styles.price}>${product.price.toFixed(2)}</span>
-                <Link href={`/shop/${product.id}`} className={styles.shopNow}>
+              <div className={styles.productDetails}>
+                <h3 className={styles.productTitle}>{product.title}</h3>
+                <div className={styles.productPrice}>Nu. {product.price}</div>
+                <Link href={`/shop`} className={styles.shopButton}>
                   Shop Now
                   <FontAwesomeIcon icon={faChevronRight} />
                 </Link>
@@ -209,7 +183,7 @@ export default function Home() {
               <div className={styles.matchDate}>JUN 15, 2025 • 15:00</div>
               <div className={styles.matchTeams}>2IT FC vs AkaboTay FC</div>
               <div className={styles.ticketPrice}>From Nu. 500</div>
-              <Link href="/tickets" className={styles.buyTicket}>
+              <Link href="/ticket" className={styles.buyTicket}>
                 Buy Tickets
               </Link>
             </div>
@@ -228,6 +202,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div style={{ height: '50px', backgroundColor: 'white' }}></div>
 
       <section className={styles.playerStatsSection}>
         <div className={styles.playerStatsWrapper}>

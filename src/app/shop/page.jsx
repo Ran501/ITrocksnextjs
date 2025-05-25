@@ -6,7 +6,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faSearch, faFilter, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faSearch, faFilter, faTimes, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import '../../style/shop.css';
 import './shop.css';
 
@@ -21,11 +21,10 @@ const ShopPage = () => {
   const [customerPhone, setCustomerPhone] = useState('');
   const [phoneError, setPhoneError] = useState('');
 
-  // Advanced filter state
+  // Only price range and sort
   const [priceRange, setPriceRange] = useState([0, 10000]);
-  const [minDiscount, setMinDiscount] = useState(0);
   const [sortBy, setSortBy] = useState('default');
-  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const storedCart = localStorage.getItem('cart');
@@ -49,20 +48,28 @@ const ShopPage = () => {
         setLoading(false);
       }
     }
-
     fetchProducts();
   }, []);
 
   if (loading) return <p>Loading products...</p>;
   if (error) return <p>Error: {error}</p>;
-    // Add more products...
 
-  // Filter products based on search and filter
-  const filteredProducts = products.filter(product => {
+  // Filter products based on search, category, and price range
+  let filteredProducts = products.filter(product => {
     const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesFilter = filter === 'all' || product.category === filter;
-    return matchesSearch && matchesFilter;
+    const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
+    return matchesSearch && matchesFilter && matchesPrice;
   });
+
+  // Sort products
+  if (sortBy === 'price-asc') {
+    filteredProducts = filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (sortBy === 'price-desc') {
+    filteredProducts = filteredProducts.sort((a, b) => b.price - a.price);
+  } else if (sortBy === 'discount-desc') {
+    filteredProducts = filteredProducts.sort((a, b) => (b.discount || 0) - (a.discount || 0));
+  }
 
   const addItemToCart = (product) => {
     const newCart = [...cart];
@@ -169,8 +176,10 @@ const ShopPage = () => {
               </div>
             </div>
             
-            <button className="advanced-filter-toggle" onClick={() => setShowAdvancedFilters(v => !v)}>
-              {showAdvancedFilters ? 'Hide Filters' : 'Advanced Filters'}
+            {/* Sidebar toggle for mobile */}
+            <button className="sidebar-toggle" onClick={() => setSidebarOpen(v => !v)}>
+              <FontAwesomeIcon icon={sidebarOpen ? faChevronLeft : faFilter} />
+              <span className="sidebar-toggle-label">Filters</span>
             </button>
             
             <div className="cart-icon" onClick={() => setShowCartModal(true)}>
@@ -180,67 +189,85 @@ const ShopPage = () => {
           </div>
         </div>
 
-        {/* Advanced Filters UI */}
-        {showAdvancedFilters && (
-          <div className="advanced-filters" style={{
-            display: 'flex', flexWrap: 'wrap', gap: '1rem', margin: '1rem 0', background: '#f8f8f8', padding: '1rem', borderRadius: '8px',
-          }}>
-            <div style={{ minWidth: 180 }}>
-              <label style={{ fontWeight: 500 }}>Price Range (Nu.)</label>
-              <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                <input type="number" min={0} max={priceRange[1]} value={priceRange[0]} onChange={e => setPriceRange([+e.target.value, priceRange[1]])} style={{ width: 70 }} />
+        {/* Main shop content with sidebar */}
+        <div className="shop-content">
+          {/* Sidebar (filters) */}
+          <aside className={`shop-sidebar${sidebarOpen ? ' open' : ''}`}>
+            <div className="sidebar-header">
+              <h3>Filters</h3>
+              <button className="close-sidebar" onClick={() => setSidebarOpen(false)}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
+            <div className="sidebar-section">
+              <label>Price Range (Nu.)</label>
+              <div className="sidebar-range">
+                <input
+                  type="number"
+                  min={0}
+                  max={priceRange[1]}
+                  value={priceRange[0] === 0 ? '' : priceRange[0]}
+                  placeholder="0"
+                  onChange={e => {
+                    let val = e.target.value.replace(/^0+(?!$)/, '');
+                    setPriceRange([val === '' ? 0 : +val, priceRange[1]]);
+                  }}
+                />
                 <span>-</span>
-                <input type="number" min={priceRange[0]} value={priceRange[1]} onChange={e => setPriceRange([priceRange[0], +e.target.value])} style={{ width: 70 }} />
+                <input
+                  type="number"
+                  min={priceRange[0]}
+                  value={priceRange[1] === 10000 ? '' : priceRange[1]}
+                  placeholder="10000"
+                  onChange={e => {
+                    let val = e.target.value.replace(/^0+(?!$)/, '');
+                    setPriceRange([priceRange[0], val === '' ? 10000 : +val]);
+                  }}
+                />
               </div>
             </div>
-            <div style={{ minWidth: 140 }}>
-              <label style={{ fontWeight: 500 }}>Min Discount (%)</label>
-              <input type="number" min={0} max={100} value={minDiscount} onChange={e => setMinDiscount(+e.target.value)} style={{ width: 60 }} />
-            </div>
-            <div style={{ minWidth: 180 }}>
-              <label style={{ fontWeight: 500 }}>Sort By</label>
-              <select value={sortBy} onChange={e => setSortBy(e.target.value)} style={{ width: 120 }}>
+            <div className="sidebar-section">
+              <label>Sort By</label>
+              <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
                 <option value="default">Default</option>
                 <option value="price-asc">Price: Low to High</option>
                 <option value="price-desc">Price: High to Low</option>
-                <option value="discount-desc">Discount: High to Low</option>
               </select>
             </div>
-          </div>
-        )}
-
-        {/* Product Grid */}
-        <div className="product-grid">
-          {filteredProducts.map(product => (
-            <div key={product.id} className="product-card">
-              {product.discount > 0 && (
-                <div className="discount-tag">-{product.discount}%</div>
-              )}
-              <div className="product-image">
-                <Image 
-                  src={product.image} 
-                  alt={product.title}
-                  width={200}
-                  height={200}
-                />
-              </div>
-              <div className="product-info">
-                <h3>{product.title}</h3>
-                <div className="product-price">
-                  {product.originalPrice && (
-                    <del>Nu.{product.originalPrice}</del>
-                  )}
-                  <strong>Nu.{product.price}</strong>
+          </aside>
+          {/* Product Grid */}
+          <div className="product-grid">
+            {filteredProducts.map(product => (
+              <div key={product.id} className="product-card">
+                {product.discount > 0 && (
+                  <div className="discount-tag">-{product.discount}%</div>
+                )}
+                <div className="product-image">
+                  <Image 
+                    src={product.image} 
+                    alt={product.title}
+                    width={200}
+                    height={200}
+                  />
                 </div>
+                <div className="product-info">
+                  <h3>{product.title}</h3>
+                  <div className="product-price">
+                    {product.originalPrice && (
+                      <del>Nu.{product.originalPrice}</del>
+                    )}
+                    <strong>Nu.{product.price}</strong>
+                  </div>
+                </div>
+                <button 
+                  className="add-to-cart"
+                  onClick={() => addItemToCart(product)}
+                >
+                  <FontAwesomeIcon icon={faCartShopping} /> Add to Cart
+                </button>
               </div>
-              <button 
-                className="add-to-cart"
-                onClick={() => addItemToCart(product)}
-              >
-                <FontAwesomeIcon icon={faCartShopping} /> Add to Cart
-              </button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Cart Modal */}
@@ -281,9 +308,13 @@ const ShopPage = () => {
                         Nu.{(item.price * item.quantity).toFixed(2)}
                         <button 
                           className="remove-item"
-                          onClick={() => updateQuantity(item.id, -item.quantity)}
+                          onClick={() => {
+                            if (window.confirm('Are you sure you want to remove this item from your cart?')) {
+                              updateQuantity(item.id, -item.quantity);
+                            }
+                          }}
                         >
-                          Remove
+                          <FontAwesomeIcon icon={faTimes} />
                         </button>
                       </div>
                     </div>

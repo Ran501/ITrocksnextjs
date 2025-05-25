@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faSignOutAlt, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import styles from './Navigation.module.css';
 
 export default function Navigation() {
   const { data: session, status } = useSession();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,16 +28,18 @@ export default function Navigation() {
         <Link href="/" className={styles.logo}>
           IT FC
         </Link>
-
+        {/* Hamburger for mobile */}
+        <button className={styles.menuButton} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+          <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+        </button>
         {/* Middle - Navigation Links */}
-        <div className={styles.navLinks}>
+        <div className={`${styles.navLinks} ${menuOpen ? styles.open : ''}`}>
           <Link href="/">Home</Link>
           <Link href="/club">Club</Link>
           <Link href="/team">Team</Link>
           <Link href="/ticket">Tickets</Link>
           <Link href="/shop">Shop</Link>
         </div>
-
         {/* Right side - Auth */}
         <div className={styles.authSection}>
           {session ? (

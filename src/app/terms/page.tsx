@@ -4,7 +4,8 @@ import styles from './terms.module.css';
 
 export default function TermsPage() {
   return (
-    <div className={styles.container}>
+    <div className={styles.container}>      
+      <div style={{ height: '160px' }} />
       <h1>Terms of Use</h1>
       
       <section className={styles.section}>

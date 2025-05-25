@@ -112,11 +112,11 @@ export const players = [
       goals: "14",
       assists: "3",
       radarStats: {
-        finishing: 82,
-        dribbling: 84,
-        pace: 86,
-        shooting: 83,
-        heading: 76,
+        finishing: 76,
+        dribbling: 91,
+        pace: 93,
+        shooting: 80,
+        heading: 70,
         positioning: 80
         }
     },
@@ -218,10 +218,10 @@ export const players = [
       goals: "7",
       assists: "2",
       radarStats: {
-        finishing: 85,
-        dribbling: 82,
-        pace: 84,
-        shooting: 86,
+        finishing: 78,
+        dribbling: 78,
+        pace: 89,
+        shooting: 72,
         heading: 78,
         positioning: 83 
       }
@@ -240,16 +240,16 @@ export const players = [
     image: "/img/playercrop/sticker8.jpg",
     stats: {
       minutes: "880",
-    appearances: "14",
-    goals: "3",
-    assists: "8",
-    radarStats: {
-      tackling: 78,
-      marking: 76,
-      heading: 72,
-      positioning: 84,
-      passing: 86,
-      strength: 75
+      appearances: "14",
+      tackles: "18",
+      interceptions: "27",
+      radarStats: {
+        tackling: 78,
+        marking: 76,
+        heading: 72,
+        positioning: 84,
+        passing: 86,
+        strength: 75
       }
     },
     social: {
@@ -489,6 +489,46 @@ const PlayerStats: React.FC<PlayerStatsProps> = ({ currentPlayer, onPrevious, on
               <span className={styles.value}>{player.stats.appearances}</span>
               <span className={styles.label}>APPEARANCES</span>
             </div>
+            {player.position === 'GOALKEEPER' && player.stats.cleanSheets !== undefined && (
+              <div 
+                className={`${styles.stat} ${highlightedStat === 'cleanSheets' ? styles.highlighted : ''}`}
+                onMouseEnter={() => setHighlightedStat('cleanSheets')}
+                onMouseLeave={() => setHighlightedStat(null)}
+              >
+                <span className={styles.value}>{player.stats.cleanSheets}</span>
+                <span className={styles.label}>CLEAN SHEETS</span>
+              </div>
+            )}
+            {player.position === 'GOALKEEPER' && player.stats.saves !== undefined && (
+              <div 
+                className={`${styles.stat} ${highlightedStat === 'saves' ? styles.highlighted : ''}`}
+                onMouseEnter={() => setHighlightedStat('saves')}
+                onMouseLeave={() => setHighlightedStat(null)}
+              >
+                <span className={styles.value}>{player.stats.saves}</span>
+                <span className={styles.label}>SAVES</span>
+              </div>
+            )}
+            {player.position === 'DEFENDER' && player.stats.tackles !== undefined && (
+              <div 
+                className={`${styles.stat} ${highlightedStat === 'tackles' ? styles.highlighted : ''}`}
+                onMouseEnter={() => setHighlightedStat('tackles')}
+                onMouseLeave={() => setHighlightedStat(null)}
+              >
+                <span className={styles.value}>{player.stats.tackles}</span>
+                <span className={styles.label}>TACKLES</span>
+              </div>
+            )}
+            {player.position === 'DEFENDER' && player.stats.interceptions !== undefined && (
+              <div 
+                className={`${styles.stat} ${highlightedStat === 'interceptions' ? styles.highlighted : ''}`}
+                onMouseEnter={() => setHighlightedStat('interceptions')}
+                onMouseLeave={() => setHighlightedStat(null)}
+              >
+                <span className={styles.value}>{player.stats.interceptions}</span>
+                <span className={styles.label}>INTERCEPTIONS</span>
+              </div>
+            )}
             {player.stats.goals !== undefined && (
               <div 
                 className={`${styles.stat} ${highlightedStat === 'goals' ? styles.highlighted : ''}`}

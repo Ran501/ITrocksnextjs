@@ -508,7 +508,7 @@
 
 .cardIcon {
   font-size: 2.5rem;
-  color: #0070f3;
+  color: #e31837;
   margin-bottom: 1rem;
 }
 
@@ -562,7 +562,7 @@
 
 .sectionHeader h2 {
   font-size: 1.75rem;
-  color: #1a237e;
+  color: #e31837;
 }
 
 .monthSelector {
@@ -580,8 +580,8 @@
 }
 
 .monthSelector button.active {
-  color: #0070f3;
-  border-bottom: 2px solid #0070f3;
+  color: #e31837;
+  border-bottom: 2px solid #e31837;
 }
 
 .ticketNotice {
@@ -625,7 +625,7 @@
 }
 
 .featureIcon {
-  color: #0070f3;
+  color: #e31837;
   font-size: 1.5rem;
 }
 

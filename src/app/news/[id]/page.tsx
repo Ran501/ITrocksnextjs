@@ -33,6 +33,7 @@ export default function NewsArticle({ params }: { params: { id: string } }) {
         <FontAwesomeIcon icon={faArrowLeft} />
         Back to News
       </Link>
+      <div style={{ height: '170px' }} />
       <article className={styles.article}>
         <div className={styles.articleHeader}>
           <span className={styles.date}>{article.date}</span>
