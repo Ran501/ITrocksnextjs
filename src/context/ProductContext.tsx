@@ -1,7 +1,12 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { Category } from '@prisma/client';
+
+enum Category {
+  jerseys = 'jerseys',
+  apparel = 'apparel',
+  accessories = 'accessories'
+}
 
 interface Product {
   id: number;
