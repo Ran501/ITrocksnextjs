@@ -10,7 +10,7 @@ export async function PUT(
   try {
     const body = await request.json();
     const product = await prisma.product.update({
-      where: { id: parseInt(params.id) },
+      where: { id: params.id },
       data: body
     });
     return NextResponse.json(product);
@@ -26,7 +26,7 @@ export async function DELETE(
 ) {
   try {
     await prisma.product.delete({
-      where: { id: parseInt(params.id) }
+      where: { id: params.id }
     });
     return NextResponse.json({ message: 'Product deleted successfully' });
   } catch (error) {

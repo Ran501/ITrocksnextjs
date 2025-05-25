@@ -14,7 +14,7 @@ enum Category {
 }
 
 interface Product {
-  id: number;
+  id: string;
   title: string;
   price: number;
   originalPrice: number;
@@ -26,7 +26,7 @@ interface Product {
 export default function ProductManager() {
   const { products, addProduct, updateProduct, deleteProduct } = useProducts();
   const [isAdding, setIsAdding] = useState(false);
-  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState<Partial<Product>>({
     title: '',
     price: 0,
@@ -53,7 +53,7 @@ export default function ProductManager() {
     setFormData(product);
   };
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       await deleteProduct(id);
     }

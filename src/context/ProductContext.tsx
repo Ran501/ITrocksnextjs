@@ -9,7 +9,7 @@ enum Category {
 }
 
 interface Product {
-  id: number;
+  id: string;
   title: string;
   price: number;
   originalPrice: number;
@@ -21,8 +21,8 @@ interface Product {
 interface ProductContextType {
   products: Product[];
   addProduct: (product: Omit<Product, 'id'>) => Promise<void>;
-  updateProduct: (id: number, product: Partial<Product>) => Promise<void>;
-  deleteProduct: (id: number) => Promise<void>;
+  updateProduct: (id: string, product: Partial<Product>) => Promise<void>;
+  deleteProduct: (id: string) => Promise<void>;
 }
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -60,7 +60,7 @@ export function ProductProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const updateProduct = async (id: number, updatedProduct: Partial<Product>) => {
+  const updateProduct = async (id: string, updatedProduct: Partial<Product>) => {
     try {
       const response = await fetch(`/api/products/${id}`, {
         method: 'PUT',
@@ -78,7 +78,7 @@ export function ProductProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const deleteProduct = async (id: number) => {
+  const deleteProduct = async (id: string) => {
     try {
       await fetch(`/api/products/${id}`, {
         method: 'DELETE',
