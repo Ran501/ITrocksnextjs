@@ -213,7 +213,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className={styles.ticketTeamsRow} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3rem', marginBottom: '2.5rem' }}>
+            <div className="ticketTeamsRow" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3rem', marginBottom: '2.5rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: 180 }}>
                 <img src="/img/it.jpg" alt="2ITFC" style={{ width: 120, height: 120, objectFit: 'contain', background: '#fff', borderRadius: '50%', padding: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }} />
                 <div style={{ fontSize: '2.5rem', fontWeight: 900, letterSpacing: 2, color: '#fff', textShadow: '2px 2px 8px rgba(0,0,0,0.4)', marginTop: 16 }}>2ITFC</div>
